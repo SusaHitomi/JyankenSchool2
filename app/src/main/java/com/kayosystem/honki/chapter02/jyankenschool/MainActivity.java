@@ -1,8 +1,10 @@
 package com.kayosystem.honki.chapter02.jyankenschool;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -10,7 +12,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView player;
-    TextView cpu;
+    ImageView cpu;
     TextView result;
     int number;
 
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         player=(TextView)findViewById(R.id.player);
-        cpu=(TextView)findViewById(R.id.cpu);
+        cpu=(ImageView)findViewById(R.id.cpu);
         result=(TextView)findViewById(R.id.result);
     }
 
@@ -30,16 +32,54 @@ public class MainActivity extends AppCompatActivity {
         number = random.nextInt(3);
 
         if (number == 0) {
-            cpu.setText("相手の手はグーです");
+            cpu.setImageResource(R.drawable.goo);
             result.setText("引き分けです");
 
         } else if (number == 1) {
-            cpu.setText("相手の手はチョキです");
+            cpu.setImageResource(R.drawable.choki);
             result.setText("あなたの勝ちです");
 
         } else if (number == 2) {
-            cpu.setText("相手の手はパーです");
+            cpu.setImageResource(R.drawable.paa);
             result.setText("あなたの負けです");
+        }
+    }
+
+    public void choki(View v) {
+        player.setText("あなたの手はチョキです");
+        Random random = new Random();
+        number = random.nextInt(3);
+
+        if (number == 0) {
+            cpu.setImageResource(R.drawable.goo);
+            result.setText("あなたの負けです");
+
+        } else if (number == 1) {
+            cpu.setImageResource(R.drawable.choki);
+            result.setText("引き分けです");
+
+        } else if (number == 2) {
+            cpu.setImageResource(R.drawable.paa);
+            result.setText("あなたの勝ちです");
+        }
+    }
+
+    public void paa(View v) {
+        player.setText("あなたの手はパーです");
+        Random random = new Random();
+        number = random.nextInt(3);
+
+        if (number == 0) {
+            cpu.setImageResource(R.drawable.goo);
+            result.setText("あなたの勝ちです");
+
+        } else if (number == 1) {
+            cpu.setImageResource(R.drawable.choki);
+            result.setText("あなたの負けです");
+
+        } else if (number == 2) {
+            cpu.setImageResource(R.drawable.paa);
+            result.setText("引き分けです");
         }
     }
 }
